@@ -1,11 +1,22 @@
 .charsheet {
 	background-color: black;
+	background-image: url(https://cdn.pixabay.com/photo/2015/09/29/15/12/stars-964022_960_720.png); /*black space with tiny white stars*/
+	background-repeat: repeat;
 	color: #79A9A0;
 	min-width: 975px;
 }
 
 .sheet-header{
 	margin-bottom:10px;
+}
+
+.sheet-wy-logo{
+	position:absolute;
+	left:50%;
+	transform: translate(-50%,0);
+	background: black;
+	outline: #79A9A0 groove 5px;
+	background-image: repeating-linear-gradient(rgba(0,127,0,0), rgba(0, 127, 0, .25) 2%);
 }
 
 .sheet-nav{
