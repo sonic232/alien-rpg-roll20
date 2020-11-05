@@ -1,0 +1,269 @@
+<div class="header flex-section no-wrap">
+	<div class="entry-group flex inline">
+		<h3>Name:</h3><input type="text" name="attr_character_name" />
+	</div>
+	<div class="entry-group flex inline">
+		<h3>Career:</h3><input type="text" name="attr_career" class="long" />
+	</div>
+	<div class="entry-group flex inline">
+		<h3>XP</h3><input type="number" name="attr_xp" class="short"/>
+	</div>
+	<div class="entry-group flex inline">
+		<h3>Story Points</h3><input type="number" max="3" name="attr_story_points" class="short"/>
+	</div>
+</div>
+<div class="nav">
+	<button type="action" name="act_character">Character</button>
+	<button type="action" name="act_attributes">Attributes & Conditions</button>
+	<button type="action" name="act_equipment">Equipment & Consumables</button>
+</div>
+<div class="wy-logo"></div>
+<input type="hidden" class="sheet-tabstoggle" name="attr_sheetTab" value="character" />
+<div class="section character">
+	<div class="3colrow">
+		<div class="col">
+			<div class="entry-group">
+				<h3>Personal Agenda:</h3><textarea name="attr_agenda"></textarea>
+			</div>
+			<br/>
+			<div class="entry-group">
+				<h3>Relationships</h3>
+				<div class="inline-block"><h4>Buddy:</h4><input type="text" name="attr_buddy" /></div>
+				<div class="inline-block"><h4>Rival:</h4><input type="text" name="attr_rival" /></div>
+			</div>
+		</div>
+		
+		<div class="col">
+			<div class="entry-group">
+				<h3>Appearance:</h3><textarea name="attr_appearance"></textarea>
+			</div>
+		</div>
+		
+		<div class="col">
+			<div class="entry-group">
+				<h3>Talents</h3>
+				<fieldset class="repeating_talents">
+					<h4>Name</h4><input type="text" name="attr_talent_name" />
+					<textarea name="talent_description"></textarea>
+				</fieldset>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="section attributes">
+	<div class="flex-section no-wrap">
+		<div class="flex">
+			<h3>Stress Level </h3><input type="number" name="attr_stress" min="0" max="10" class="short"/>
+		</div>
+		<div class="flex">
+			<h3>Health </h3><input type="number" name="health" min="0" max="@{health_max}" class="short"/><span> / </span><input type="number" name="attr_health_max" value="@{strength}+@{max_health_mod}" disabled="true"/>
+			<span>Mod </span><input type="number" name="attr_max_health_mod" />
+		</div>
+		<div class="flex">
+			<h3>Radiation </h3><input type="number" name="attr_radiation" min="0" max="10" class="short"/>
+		</div>
+	</div>
+	<div class="flex-section">
+		<div class="flex">
+			<h2>Critical Injuries</h2>
+			<fieldset class="repeating_injuries">
+				<input type="text" name="attr_injury_name" class="full"/>
+			</fieldset>
+		</div>
+		<div class="flex">
+			<h2>Conditions</h2>
+			<div class="flex-section center">
+				<div class="flex large inline entry-group">
+					<h3>Starving</h3><input type="checkbox" name="attr_condition_starving"/>
+				</div>
+				<div class="flex large inline entry-group">
+					<h3>Dehydrated</h3><input type="checkbox" name="attr_condition_dehydrated"/>
+				</div>
+				<div class="flex large inline entry-group">
+					<h3>Exhausted</h3><input type="checkbox" name="attr_condition_exhausted"/>
+				</div>
+				<div class="flex large inline entry-group">
+					<h3>Freezing</h3><input type="checkbox" name="attr_condition_freezing"/>
+				</div>
+			</div>
+		</div>
+	</div>
+	<h2>Attributes</h2>
+	<div class="flex-section">
+		<div class="attribute-group flex">
+			<h3>Strength </h3><input type="number" name="attr_strength" class="short">
+			<div class="flex-section">
+				<div class="flex">
+					<h3>Heavy Machinery </h3><input type="number" name="attr_skill_heavy_machinery" class="short"/>
+					<button type="roll" name="roll_heavymachinery" value="&{template:successes} {{name=@{character_name}}} {{skill=Heavy Machinery}} {{attribute=Strength}} {{base=[[(@{skill_heavy_machinery}+@{strength})d6>6]]}} {{stress=[[@{stress}d6>6cf1]]}}"></button>
+				</div>
+				<div class="flex">
+					<h3>Close Combat </h3><input type="number" name="attr_skill_close_combat" class="short"/>
+					<button type="roll" name="roll_closecombat" value="&{template:successes} {{name=@{character_name}}} {{skill=Close Combat}} {{attribute=Strength}} {{base=[[(@{skill_close_combat}+@{strength})d6>6]]}} {{stress=[[@{stress}d6>6cf1]]}}"></button>
+				</div>
+				<div class="flex">
+					<h3>Stamina </h3><input type="number" name="attr_skill_stamina" class="short"/>
+					<button type="roll" name="roll_stamina" value="&{template:successes} {{name=@{character_name}}} {{skill=Stamina}} {{attribute=Strength}} {{base=[[(@{skill_stamina}+@{strength})d6>6]]}} {{stress=[[@{stress}d6>6cf1]]}}"></button>
+				</div>
+			</div>
+		</div>
+        <div class="attribute-group flex">
+			<h3>Agility </h3><input type="number" name="attr_agility" class="short">
+			<div class="flex-section">
+				<div class="flex">
+					<h3>Mobility </h3><input type="number" name="attr_skill_mobility" class="short"/>
+					<button type="roll" name="roll_mobility" value="&{template:successes} {{name=@{character_name}}} {{skill=Mobility}} {{attribute=Agility}} {{base=[[(@{skill_mobility}+@{agility})d6>6]]}} {{stress=[[@{stress}d6>6cf1]]}}"></button>
+				</div>
+				<div class="flex">
+					<h3>Ranged Combat </h3><input type="number" name="attr_skill_ranged_combat" class="short"/>
+					<button type="roll" name="roll_ranged" value="&{template:successes} {{name=@{character_name}}} {{skill=Ranged Combat}} {{attribute=Agility}} {{base=[[(@{skill_ranged_combat}+@{agility})d6>6]]}} {{stress=[[@{stress}d6>6cf1]]}}"></button>
+				</div>
+				<div class="flex">
+					<h3>Piloting </h3><input type="number" name="attr_skill_piloting" class="short"/>
+					<button type="roll" name="roll_piloting" value="&{template:successes} {{name=@{character_name}}} {{skill=Piloting}} {{attribute=Agility}} {{base=[[(@{skill_piloting}+@{agility})d6>6]]}} {{stress=[[@{stress}d6>6cf1]]}}"></button>
+				</div>
+			</div>
+		</div>
+        <div class="attribute-group flex">
+			<h3>Wits </h3><input type="number" name="attr_wits" class="short">
+			<div class="flex-section">
+				<div class="flex">
+					<h3>Survival </h3><input type="number" name="attr_skill_survival" class="short"/>
+					<button type="roll" name="roll_survival" value="&{template:successes} {{name=@{character_name}}} {{skill=Survival}} {{attribute=Wits}} {{base=[[(@{skill_survival}+@{wits})d6>6]]}} {{stress=[[@{stress}d6>6cf1]]}}"></button>
+				</div>
+				<div class="flex">
+					<h3>Observation </h3><input type="number" name="attr_skill_observation" class="short"/>
+					<button type="roll" name="roll_observation" value="&{template:successes} {{name=@{character_name}}} {{skill=Observation}} {{attribute=Wits}} {{base=[[(@{skill_observation}+@{wits})d6>6]]}} {{stress=[[@{stress}d6>6cf1]]}}"></button>
+				</div>
+				<div class="flex">
+					<h3>ComTech </h3><input type="number" name="attr_skill_comtech" class="short"/>
+					<button type="roll" name="roll_comtech" value="&{template:successes} {{name=@{character_name}}} {{skill=ComTech}} {{attribute=Wits}} {{base=[[(@{skill_comtech}+@{wits})d6>6]]}} {{stress=[[@{stress}d6>6cf1]]}}"></button>
+				</div>
+			</div>
+        </div>
+		<div class="attribute-group flex">
+			<h3>Empathy </h3><input type="number" name="attr_empathy" class="short">
+        	<div class="flex-section">
+				<div class="flex">
+					<h3>Manipulation </h3><input type="number" name="attr_skill_manipulation" class="short"/>
+					<button type="roll" name="roll_manipulation" value="&{template:successes} {{name=@{character_name}}} {{skill=Manipulation}} {{attribute=Empathy}} {{base=[[(@{skill_manipulation}+@{empathy})d6>6]]}} {{stress=[[@{stress}d6>6cf1]]}}"></button>
+				</div>
+				<div class="flex">
+					<h3>Medical Aid </h3><input type="number" name="attr_skill_medical_aid" class="short"/>
+					<button type="roll" name="roll_medical_aid" value="&{template:successes} {{name=@{character_name}}} {{skill=Medical Aid}} {{attribute=Empathy}} {{base=[[(@{skill_medical_aid}+@{empathy})d6>6]]}} {{stress=[[@{stress}d6>6cf1]]}}"></button>
+				</div>
+				<div class="flex">
+					<h3>Command </h3><input type="number" name="attr_skill_command" class="short"/>
+					<button type="roll" name="roll_command" value="&{template:successes} {{name=@{character_name}}} {{skill=Command}} {{attribute=Empathy}} {{base=[[(@{skill_command}+@{empathy})d6>6]]}} {{stress=[[@{stress}d6>6cf1]]}}"></button>
+				</div>
+			</div>
+		</div>
+	</div>
+		<div class="flex-section">
+			<div class="flex">
+				<div class="entry-group flex-section">
+					<div class="flex">
+						<h3>Armor</h3><input type="text" name="attr_armor_type">
+					</div>
+					<div class="flex">
+						<h3>Rating</h3><input type="number" name="attr_armor_rating"/>
+					</div>
+				</div>
+			</div>
+			<div class="flex">
+				<h3>Encumberance</h3><input type="number" name="attr_encumberance" />
+			</div>
+		</div>
+		<div class="grid weapon">			
+			<div class="weapon-name">
+				Weapons
+			</div>
+			<div class="weapon-stat">
+				Bonus
+			</div>
+			<div class="weapon-stat">
+				Damage
+			</div>
+			<div class="weapon-stat">
+				Range
+			</div>
+		</div>
+		<fieldset class="repeating_weapons grid weapon">
+			<div class="weapon-name">
+				<input type="text" name="attr_weapon_type" class="full"/>
+			</div>
+			<div class="weapon-stat">
+				<input type="number" name="attr_weapon_bonus" class="full"/>
+			</div>
+			<div class="weapon-stat">
+				<input type="number" name="attr_weapon_damage" class="full"/>
+			</div>
+			<div class="weapon-stat">
+				<input type="number" name="attr_weapon_range" class="full"/>
+			</div>				
+		</fieldset>
+	</div>
+<div class="section equipment">
+	<h3>Tiny Items</h3>
+	<textarea name="attr_tiny_items"></textarea>
+	<h3>Signature Item</h3><input type="text" name="attr_signature_item"/>
+	<div class="grid gear">
+		<div class="gear-name">
+			<h3>Gear</h3>
+		</div>
+	</div>
+	<fieldset class="repeating_gear grid gear">
+		<div class="gear-name">
+			<input type="text" name="attr_gear_name" class="full"/>
+		</div>
+	</fieldset>
+	<h2>Consumables</h2>
+	<div class="flex-section no-wrap center">
+		<div class="flex large">
+			<h3>Air</h3><input type="number" name="attr_consumable_air" class="short"/>
+		</div>
+		<div class="flex large">
+			<h3>Food</h3><input type="number" name="attr_consumable_food" class="short"/>
+		</div>
+		<div class="flex large">
+			<h3>Power</h3><input type="number" name="attr_consumable_power" class="short"/>
+		</div>
+		<div class="flex large">
+			<h3>Water</h3><input type="number" name="attr_consumable_water" class="short"/>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col">
+		Footer
+	</div
+</div>
+
+<script type="text/worker">
+    const buttonlist = ["character","attributes","equipment"];
+    buttonlist.forEach(button => {
+        on(`clicked:${button}`, function() {
+            setAttrs({
+                sheetTab: button
+            });
+        });
+    });
+</script>
+
+<rolltemplate class="sheet-rolltemplate-successes">
+	<div class="sheet-template-container">
+		<div class="sheet-template-header">
+			{{#name}}<h3>{{name}}</h3>{{/name}}
+			{{#skill}}<h4>{{skill}}{{#attribute}}<span> (</span>{{attribute}}<span>)</span>{{/attribute}}{{/skill}}
+		</div>
+		<div class="sheet-template-row">
+		{{#^rollWasFumble() stress}}
+			{{#base}}<span>Base</span>{{base}}{{/base}}
+			{{#stress}}<span>+ Stress</span>{{stress}}{{/stress}}
+		{{/^rollWasFumble() stress}}
+		{{#rollWasFumble() stress}}
+			<h2>Panic!</h2>
+		{{/rollWasFumble() stress}}
+		</div>
+	</div>
+</rolltemplate>

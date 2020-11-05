@@ -1,0 +1,197 @@
+.charsheet {
+	background-color: black;
+	color: #79A9A0;
+	min-width: 975px;
+}
+
+.sheet-header{
+	margin-bottom:10px;
+}
+
+.sheet-nav{
+	padding:10px;
+	padding-bottom:0px;
+	margin-bottom:5px;
+	color:black;
+	background-color:black;
+	z-index:10;
+	width:auto;
+	float:left;
+	outline: #79A9A0 groove 5px;
+	background-image: repeating-linear-gradient(rgba(0,127,0,0), rgba(0, 127, 0, .25) 2%);
+}
+
+.sheet-section{
+	z-index:5;
+	background-color:black;
+	outline: #79A9A0 groove 5px;
+	clear:both;
+	padding:5px;
+	background-image: repeating-linear-gradient(rgba(0,127,0,0), rgba(0, 127, 0, .25) 2%);
+}
+
+.sheet-flex-section{
+	display:flex;
+	flex-direction:row;
+	flex-wrap:wrap;
+	align-items:left;
+	justify-content:space-evenly;
+	align-content:space-around;
+}
+
+.sheet-attribute-group > .sheet-flex-section, .sheet-flex-section.sheet-no-wrap
+{
+	flex-wrap: nowrap;
+}
+
+.sheet-flex{
+	flex: 1 1 33%;
+	margin-top:0;
+	margin-bottom:0.5em;
+	margin-left:0.25em;
+	margin-right:0.25em;
+}
+
+.sheet-flex.sheet-large{
+	flex: 2 2 40%;
+}
+
+.sheet-attribute-group, .sheet-entry-group {
+	border: 5px;
+	border-color: white;
+	background-image: linear-gradient(45deg, rgba(191, 209, 202, 0.90), rgba(158, 180, 171, 0.85));
+	color:black;
+	padding:5px;
+	border-radius: 5px 20px 20px;
+}
+
+.sheet-attribute-group {
+	text-align:center;
+}
+
+.sheet-entry-group textarea {
+	width:90%;
+}
+
+.sheet-center {
+	text-align:center;
+}
+
+.sheet-flex.sheet-inline {
+	display:inline-flex;
+}
+
+div.sheet-inline-block {
+	display:inline-block;
+}
+
+.sheet-flex.sheet-inline > input {
+	margin-left:10px;
+}
+
+.sheet-grid, [data-groupname="repeating_weapons"] > .repitem, [data-groupname="repeating_gear"] > .repitem{
+	display: grid;
+}
+
+.sheet-grid.sheet-weapon, [data-groupname="repeating_weapons"] > .repitem{
+	grid-template-columns: 46% 18% 18% 18%;
+}
+
+.sheet-grid.sheet-gear, [data-groupname="repeating_gear"] > .repitem{
+	grid-template-columns: 100%;
+}
+
+/* Universal styling applied to all elements of these types */
+
+h2 {
+	font-size: 2em;
+	margin-bottom: 10px;
+	text-align: center;
+}
+
+h1,h2,h3,h4,h5,h6,h7,label{
+	color: #79A9A0;
+}
+
+label {
+	display: inline-block;
+	width: 31%;
+}
+
+input[type="text"] {
+	display: inline-block;
+	width:165px;
+}
+
+input[type="number"]{
+	display: inline-block;
+}
+
+img {
+	max-height: 100px;
+}
+
+textarea {
+	resize: vertical;
+}
+
+/* Targetted styling that only effects elements with these classes */
+input.sheet-short {
+	width: 17%;
+}
+
+input.sheet-long {
+	width:200px;
+}
+
+input.sheet-full{
+	width: 100%
+}
+
+select.sheet-dtype {
+    vertical-align: top;
+    width: 60px;
+}
+span.sheet-dee {
+	font-size: 1.4em;
+	font-weight: bold;
+	left: -36%;
+	padding-right: 4px;
+	position: relative;
+	top: 3px;
+}
+
+/* Targetted styling that only effects elements contained within the stated class */
+.sheet-stats h3 {
+	display: inline-block;
+	text-align: left;
+}
+
+.sheet-attribute-group h1,.sheet-attribute-group h2,.sheet-attribute-group h3,.sheet-attribute-group h4,.sheet-attribute-group h5,.sheet-attribute-group h6,.sheet-attribute-group h7,.sheet-attribute-group label,
+.sheet-entry-group h1,.sheet-entry-group h2,.sheet-entry-group h3,.sheet-entry-group h4,.sheet-entry-group h5,.sheet-entry-group h6,.sheet-entry-group h7,.sheet-entry-group label{
+	color:#134D46
+}
+
+.sheet-stats h3:first-child {
+	margin-left: 35%;
+	margin-right: 15%;
+}
+
+.sheet-stats input {
+	margin-right: 8%;
+	width: 17%;
+}
+
+/*Configure the tab buttons*/
+.sheet-character,
+.sheet-attributes,
+.sheet-equipment {
+	display: none;
+}
+
+/* show the selected tab */
+.sheet-tabstoggle[value="character"] ~ div.sheet-character,
+.sheet-tabstoggle[value="attributes"] ~ div.sheet-attributes,
+.sheet-tabstoggle[value="equipment"] ~ div.sheet-equipment {
+	display: block;
+}
