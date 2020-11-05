@@ -38,6 +38,7 @@
 	outline: #79A9A0 groove 5px;
 	clear:both;
 	padding:5px;
+	padding-top:25px;
 	background-image: repeating-linear-gradient(rgba(0,127,0,0), rgba(0, 127, 0, .25) 2%);
 }
 
