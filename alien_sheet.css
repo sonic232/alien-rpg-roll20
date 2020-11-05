@@ -12,8 +12,7 @@
 
 .sheet-wy-logo{
 	position:absolute;
-	left:50%;
-	transform: translate(-50%,0);
+	left:75%;
 	background: black;
 	outline: #79A9A0 groove 5px;
 	background-image: repeating-linear-gradient(rgba(0,127,0,0), rgba(0, 127, 0, .25) 2%);
@@ -24,12 +23,11 @@
 	padding-bottom:0px;
 	margin-bottom:5px;
 	color:black;
-	background-color:black;
 	z-index:10;
 	width:auto;
 	float:left;
 	outline: #79A9A0 groove 5px;
-	background-image: repeating-linear-gradient(rgba(0,127,0,0), rgba(0, 127, 0, .25) 2%);
+	background-image: repeating-linear-gradient(rgba(0,127,0,0), rgba(0, 127, 0, .25) 20%);
 }
 
 .sheet-section{
